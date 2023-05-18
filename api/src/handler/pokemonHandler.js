@@ -1,5 +1,6 @@
 const { getAllPokemons, getPokemonById, getPokemonByName, createPokemon} = require('../controllers/pokemonController');
 //NO TIENE QUE INTERACTUAR CON EL MODELO !!!! PARA ESO ESTA EL CONTROLLER
+
 const getPokemonByNameHandler = async (req, res) => {
   
       const {name} = req.query;
@@ -36,10 +37,10 @@ const getAllPokemonsHandler = async (req, res)=>{
 }
 
 const createPokemonHandler= async(req,res)=>{
-    const{name,image,life,attack,defense,speed,height,weight,types} = req.body
+    const{name,image,life,attack,defense,speed,height,weight,types,fromBDD} = req.body
     
 try {
-  const newPokemon = await createPokemon(name.toLowerCase(),image,life,attack,defense,speed,height,weight,types);
+  const newPokemon = await createPokemon(name.toLowerCase(),image,life,attack,defense,speed,height,weight,types,fromBDD);
   res.status(200).json(newPokemon);
   
   } catch (error) {

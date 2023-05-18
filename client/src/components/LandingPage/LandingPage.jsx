@@ -1,15 +1,19 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import styles from './LandingPage.module.css';
 
-const LandindPage=()=>{
-   return (
-   <div>
-        <h1>BIENVENIDOS A MI PI POKEMON</h1>
-        <Link to ='/home'>
-            <button>Ingresar</button>
-        </Link>
+const LandingPage = () => {
+  return (
+    <div className={styles.background}>
+      <div className={styles.container}>
+        <div className={styles.box}>
+          <h1 className={styles.title}>Bienvenido a mi PI Pokemon</h1>
+          <Link to="/home">
+            <button className={styles.button}>Ingresar</button>
+          </Link>
+        </div>
+      </div>
     </div>
-)
-}
+  );
+};
 
-export default LandindPage
+export default LandingPage;

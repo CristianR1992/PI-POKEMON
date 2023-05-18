@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter} from 'react-router-dom'  
 import store from './redux/store';
-import { Provider } from 'react-redux';
+import { Provider } from 'react-redux'; // te voy a pasar un store donde tenes los estados globables. Le decimos a react que tenemos ese Store. Conexion react-redux
 
 ReactDOM.render(
   <Provider store={store}>

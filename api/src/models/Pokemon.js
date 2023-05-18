@@ -5,18 +5,19 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('Pokemon', {
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true
-
-    },
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
       allowNull: false,
     },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true
+
+    },
+    
     image: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -47,6 +48,9 @@ module.exports = (sequelize) => {
     weight: {
       type: DataTypes.INTEGER
     },
+    fromBDD:{
+      type:DataTypes.BOOLEAN
+    }
 
   }, { timestamps: false });
 };

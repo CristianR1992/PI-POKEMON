@@ -1,0 +1,23 @@
+.paginado {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pageNumbers {
+    list-style: none;
+    display: flex;
+    gap: 5px;
+  }
+  
+  .pageLink {
+    padding: 5px 10px;
+    background-color: #ccc;
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .pageLink:hover {
+    background-color: #aaa;
+  }

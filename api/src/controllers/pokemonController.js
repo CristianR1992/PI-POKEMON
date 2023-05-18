@@ -12,15 +12,15 @@ const getPokeByApi = async () => {
           foundPokemons.map((foundPokemon) => arrayPokeApi.push({
             id: foundPokemon.data.id,
             name: foundPokemon.data.name,
-            img: foundPokemon.data.sprites.other['official-artwork'].front_default,
+            image: foundPokemon.data.sprites.other['official-artwork'].front_default,
             life: foundPokemon.data.stats[0].base_stat,
             attack: foundPokemon.data.stats[1].base_stat,
             defense: foundPokemon.data.stats[2].base_stat,
             speed: foundPokemon.data.stats[5].base_stat,
             height: foundPokemon.data.height,
             weight: foundPokemon.data.weight,
-            types:foundPokemon.data.types.map((type)=>{return{name:type.type.name}}),
-            vieneDeApi: true
+            Types:foundPokemon.data.types.map((type)=>{return{name:type.type.name}}),
+            fromBDD: false
           }))
         })
     return arrayPokeApi;
@@ -55,7 +55,7 @@ const getPokemonById = async (id, source) => {
     if (source === "api") {
       const pokemons = await getPokeByApi()
       const pokemon = pokemons.filter(elem => elem.id == id)
-      return pokemon
+      return pokemon[0]
     }
     else {
       return await Pokemon.findByPk(id,{
@@ -72,10 +72,10 @@ const getPokemonById = async (id, source) => {
   } catch (error) { }
 }
 
-const createPokemon = async (name, image, life, attack, defense, speed, height, weight, types) => {
+const createPokemon = async (name, image, life, attack, defense, speed, height, weight, types,fromBDD) => {
 
   try {
-    if (!name || !image || !life || !attack || !defense) throw new Error("Faltan datos obligatorios");
+     if (!name || !image || !life || !attack || !defense) throw new Error("Faltan datos obligatorios");
     // const allPokemons = getAllPokemons()
     // const found = allPokemons.includes(name)
     // if(found) return "Ya existe ese Pokemon"
@@ -88,19 +88,21 @@ const createPokemon = async (name, image, life, attack, defense, speed, height, 
       speed,
       height,
       weight,
+      types,
+      fromBDD:true
+     
     })
    
     const pokemonTypes = await Types.findAll({
       where: { name: types },
     })
     newPokemon.addTypes(pokemonTypes)
-    return 'Pokemon created successfuly'
+    return newPokemon
   }
   catch (error) {
     return ({error:error.message})
    }
 }
-
 
 const getPokemonByName = async (name) => {
   

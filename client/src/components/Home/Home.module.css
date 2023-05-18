@@ -1,0 +1,31 @@
+.selectInput {
+  flex-direction: row;
+  align-items: flex-end;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+  margin-right: 1px;
+  margin-left: 38px;
+  text-align: center;
+}
+
+.button{
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #ccc;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-right: 1px;
+  margin-left: 38px;
+  
+}
+.button:hover {
+  background-color: #bebdbd;
+}
+

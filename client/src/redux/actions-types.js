@@ -1,1 +1,10 @@
 export const GET_POKEMONES = 'GET_POKEMONES'
+export const CLEAN_DETAIL = 'CLEAN_DETAIL'
+export const GET_POKEMONES_DETAIL = 'GET_POKEMONES_DETAIL'
+export const GET_TYPES ='GET_TYPES'
+export const GET_SORT ='GET_SORT'
+export const GET_SORT_ATTACK ='GET_SORT_ATTACK'
+export const FROM_API ='FROM_API'
+export const FILTER_BY_TYPE= "FILTER_BY_TYPE"
+export const CREATE_POKEMON ="CREATE_POKEMON"
+export const  ON_SEARCH=" ON_SEARCH"

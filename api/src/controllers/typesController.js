@@ -13,9 +13,10 @@ const getApiType = async () => {
     if (allTypes.length === 0) {
       await Types.bulkCreate(array);
     }
-return "Types en base de datos"
+return array
   } catch (error) {};
 }
 module.exports = {
   getApiType,
 };
+
