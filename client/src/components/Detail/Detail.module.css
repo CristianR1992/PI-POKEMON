@@ -1,0 +1,112 @@
+.card {
+    position: relative;
+   left: 35%;
+    width: 490px;
+    height: 600px;
+    border-radius: 8px;
+    background-color: #edd9d9;
+    padding: 16px;
+    border: 5px solid #cbbcbc;
+    transition: 0.5s ease-out;
+    margin-top: 3%;
+    
+}
+
+.card:hover{
+  
+    transform: scale(1.05);
+    box-shadow: 4px -3px 41px 13px rgba(138,138,138,0.75);
+    -webkit-box-shadow: 4px -3px 41px 13px rgba(138,138,138,0.75);
+    -moz-box-shadow: 4px -3px 41px 13px rgba(138,138,138,0.75);
+}
+.image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 30%;
+    margin-bottom: 1rem;
+    margin-left: 30% ;
+}
+.typesContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.typesName {
+    font-size: 1.5rem;
+    color: #181818;
+    font-weight: bold;
+    text-transform: capitalize;
+    margin-left: 60px;
+}
+
+.type {
+    font-size: 1.5rem;
+    margin-right: 0px;
+    margin-left: 50px;
+    padding: 3px;
+    background-color: #ef62ff;
+    color: rgb(0, 0, 0);
+    border-radius: 4px;
+    text-transform: capitalize;
+}
+.name {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -300%);
+    color: white;
+    text-align: center;
+}
+
+
+.attack {
+    font-size: 1.5rem;
+    background-color: #53aed4;
+    color: #333;
+    font-weight: bold;
+
+
+}
+
+.life {
+    font-size: 1.5rem;
+    background-color: #ec28c4;
+    color: #333;
+    font-weight: bold;
+ 
+}
+
+.defense {
+    font-size: 1.5rem;
+    background-color: #65e844;
+    color: #333;
+    font-weight: bold;
+ 
+}
+
+.speed {
+    font-size: 1.5rem;
+    background-color: #eb4444;
+    color: #333;
+    font-weight: bold;
+
+}
+
+.weight {
+    font-size: 1.5rem;
+    background-color: #d9f920;
+    color: #333;
+    font-weight: bold;
+
+}
+
+.height {
+    font-size: 1.5rem;
+    background-color: #9736eb;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 0;
+
+}

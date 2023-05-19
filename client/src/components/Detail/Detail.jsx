@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { getPokemonesDetail } from "../../redux/actions";
 import { useParams, Link } from 'react-router-dom'
+import styles from './Detail.module.css'
 
 
 const Detail = () => {
@@ -13,35 +14,40 @@ const Detail = () => {
     useEffect(() => {
         dispatch(getPokemonesDetail(id))
         return () => dispatch(cleanDetail())   // hago la limpieza cuando se desmonta, cuando se desmonta? cuando hay un return
-          }, [dispatch, id])                  // me quedo mirando a id porque va cambiando 
+    }, [dispatch, id])                  // me quedo mirando a id porque va cambiando 
     return (
 
         <div>
-            <Link to={'/home'}><button >Volver a la Pagina Princial </button></Link>
-            {
-                pokemonesDetails?.name ? (
-                    <>
+          
 
-                        <img src={pokemonesDetails?.image} alt="" />
-                        <h1 >Name: {pokemonesDetails?.name}</h1>
-                        <h3 >Attack: {pokemonesDetails?.attack}</h3>
-                        <h3>Life: {pokemonesDetails?.life}</h3>
-                        <h3 >Defense: {pokemonesDetails?.defense}</h3>
-                        <h3 >Speed: {pokemonesDetails?.speed}</h3>
-                        <h3 >Weight: {pokemonesDetails?.weight}</h3>
-                        <h3 >Height: {pokemonesDetails?.height}</h3>
+            <div className={styles.card}>
+                {
+                    pokemonesDetails?.name ? (
+                        <>
+                            <img className={styles.image} src={pokemonesDetails?.image} alt="" />
+                            <h1 className={styles.name}>{pokemonesDetails?.name.toUpperCase()}</h1>
+                            <h2 className={styles.attack}>Attack ➟ {pokemonesDetails?.attack}</h2>
+                            <h2 className={styles.life}>Life ➟{pokemonesDetails?.life}</h2>
+                            <h2 className={styles.defense}>Defense ➟ {pokemonesDetails?.defense}</h2>
+                            <h2 className={styles.speed}>Speed ➟ {pokemonesDetails?.speed}</h2>
+                            <h2 className={styles.weight}>Weight ➟ {pokemonesDetails?.weight}</h2>
+                            <h2 className={styles.height}>Height ➟ {pokemonesDetails?.height}</h2>
+                            <div className={styles.typesContainer}>
+                                <h2 className={styles.typesName}>Types ➟</h2>
+                                <div className={styles.types}>
+                                    {pokemonesDetails?.Types.map((type, index) => (
+                                        <span key={index} className={styles.type}>{type.name}</span>
+                                    ))}
+                                </div>
+                            </div>
 
-
-                        <div>
-                            Types: {pokemonesDetails?.Types.map((type, index) => (
-                                <h5 key={index}>{type.name}</h5>
-                            ))}
-                        </div>
-                    </>
-                ) : (
-                    <h2>cargando...</h2>
-                )}    </div>)
-
+                        </>
+                    ) : (
+                        <h2>Loading...</h2>
+                    )}
+            </div>
+        </div>
+    )
 
 }
 
