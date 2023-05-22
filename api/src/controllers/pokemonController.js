@@ -24,7 +24,9 @@ const getPokeByApi = async () => {
           }))
         })
     return arrayPokeApi;
-  } catch (error) { }
+  } catch (error) { 
+    return ({error:"No se pudieron subir los datos de la api"})
+  }
 }
 
 const getPokeByBD = async () => {
@@ -39,7 +41,9 @@ const getPokeByBD = async () => {
       }
     })
     return result
-  } catch (error) { }
+  } catch (error) { 
+    return ({error:"hubo un error al cargar la BDD"})
+  }
 }
 
 const getAllPokemons = async () => {
@@ -69,16 +73,27 @@ const getPokemonById = async (id, source) => {
       } ]
    })
     }
-  } catch (error) { }
+  } catch (error) {
+    return ({error:"No se puedo encontrar por ID"})
+   }
 }
 
 const createPokemon = async (name, image, life, attack, defense, speed, height, weight, types,fromBDD) => {
 
   try {
      if (!name || !image || !life || !attack || !defense) throw new Error("Faltan datos obligatorios");
-    // const allPokemons = getAllPokemons()
-    // const found = allPokemons.includes(name)
-    // if(found) return "Ya existe ese Pokemon"
+    
+     const existingDbPokemon = await Pokemon.findOne({
+       where: { name: name },
+     });
+     if (existingDbPokemon) {
+       throw new Error("Ya existe un Pokémon con ese nombre en la base de datos");
+     } 
+     const existingApiPokemon = await getPokemonByName(name);
+     if (existingApiPokemon.length > 0) {
+       throw new Error("Ya existe un Pokémon con ese nombre en la API");
+     }
+ 
     const newPokemon = await Pokemon.create({
       name,
       attack,
@@ -105,7 +120,6 @@ const createPokemon = async (name, image, life, attack, defense, speed, height, 
 }
 
 const getPokemonByName = async (name) => {
-  
   const databasePokemon = await Pokemon.findAll(
     { where: { name: name },
     include:[
@@ -122,10 +136,31 @@ const getPokemonByName = async (name) => {
   return [...databasePokemon, ...filtered]
 }
 
-
+const deletePokemonById = async (id)=>{
+ 
+  const pokemones= await Pokemon.destroy(
+    {where:{id:id},
+    include:[
+      { 
+      model:Types,
+      attributes:["name"],
+         through:{
+         attributes:[],
+    } } ] }
+  )
+  if(pokemones ===1){
+    return id
+  }
+  else{
+    return "No se encontro el id"
+  }
+ 
+  
+}
 module.exports = {
   getAllPokemons,
   getPokemonById,
   getPokemonByName,
   createPokemon,
+  deletePokemonById
 }

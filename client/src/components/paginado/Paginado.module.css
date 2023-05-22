@@ -16,8 +16,14 @@
     color: #333;
     text-decoration: none;
     cursor: pointer;
+    border: none;
   }
   
   .pageLink:hover {
     background-color: #aaa;
+  }
+
+  .activePage {
+    font-weight: bold;
+    color: #008bf8;
   }

@@ -2,7 +2,7 @@ import { cleanDetail } from "../../redux/actions";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { getPokemonesDetail } from "../../redux/actions";
-import { useParams, Link } from 'react-router-dom'
+import { useParams} from 'react-router-dom'
 import styles from './Detail.module.css'
 
 

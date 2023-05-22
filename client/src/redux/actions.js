@@ -1,4 +1,4 @@
-import { GET_POKEMONES, CLEAN_DETAIL, GET_POKEMONES_DETAIL, GET_TYPES, GET_SORT, GET_SORT_ATTACK, FROM_API,FILTER_BY_TYPE, CREATE_POKEMON, ON_SEARCH} from "./actions-types";
+import { GET_POKEMONES, CLEAN_DETAIL, GET_POKEMONES_DETAIL, GET_TYPES, GET_SORT, GET_SORT_ATTACK, FROM_API,FILTER_BY_TYPE, CREATE_POKEMON, ON_SEARCH, DELETE_POKEMONES} from "./actions-types";
 import axios from 'axios'
 
 
@@ -81,6 +81,15 @@ export const onSearch =(nameState)=>{
         type:ON_SEARCH,
         payload:response.data
       })
+    }       
     }
-        
+
+export const deletePokemones = (id)=>{
+    return async function (dispatch){
+        const response = await axios.delete(`http://localhost:3001/pokemon/delete/${id}`)
+        return dispatch({
+            type:DELETE_POKEMONES,
+            payload:response.data
+        })
     }
+}    

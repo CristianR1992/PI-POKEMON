@@ -4,7 +4,7 @@
     width: 490px;
     height: 600px;
     border-radius: 8px;
-    background-color: #edd9d9;
+    background-color: #e1ff00;
     padding: 16px;
     border: 5px solid #cbbcbc;
     transition: 0.5s ease-out;
@@ -13,7 +13,6 @@
 }
 
 .card:hover{
-  
     transform: scale(1.05);
     box-shadow: 4px -3px 41px 13px rgba(138,138,138,0.75);
     -webkit-box-shadow: 4px -3px 41px 13px rgba(138,138,138,0.75);
@@ -46,7 +45,7 @@
     margin-right: 0px;
     margin-left: 50px;
     padding: 3px;
-    background-color: #ef62ff;
+    background-color: #ffffff;
     color: rgb(0, 0, 0);
     border-radius: 4px;
     text-transform: capitalize;
@@ -63,7 +62,7 @@
 
 .attack {
     font-size: 1.5rem;
-    background-color: #53aed4;
+    background-color: #f9fcf8;
     color: #333;
     font-weight: bold;
 
@@ -72,7 +71,7 @@
 
 .life {
     font-size: 1.5rem;
-    background-color: #ec28c4;
+    background-color: #c58efd;
     color: #333;
     font-weight: bold;
  
@@ -88,7 +87,7 @@
 
 .speed {
     font-size: 1.5rem;
-    background-color: #eb4444;
+    background-color:#ffffff;
     color: #333;
     font-weight: bold;
 
@@ -96,7 +95,7 @@
 
 .weight {
     font-size: 1.5rem;
-    background-color: #d9f920;
+    background-color:#c58efd;
     color: #333;
     font-weight: bold;
 
@@ -104,7 +103,7 @@
 
 .height {
     font-size: 1.5rem;
-    background-color: #9736eb;
+    background-color:#65e844 ;
     color: #333;
     font-weight: bold;
     margin-bottom: 0;

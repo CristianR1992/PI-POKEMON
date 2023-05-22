@@ -8,3 +8,4 @@ export const FROM_API ='FROM_API'
 export const FILTER_BY_TYPE= "FILTER_BY_TYPE"
 export const CREATE_POKEMON ="CREATE_POKEMON"
 export const  ON_SEARCH=" ON_SEARCH"
+export const DELETE_POKEMONES="DELETE_POKEMONES"

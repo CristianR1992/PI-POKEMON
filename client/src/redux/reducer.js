@@ -1,10 +1,11 @@
-import { GET_POKEMONES, CLEAN_DETAIL, GET_POKEMONES_DETAIL, GET_TYPES, GET_SORT, GET_SORT_ATTACK, FROM_API, FILTER_BY_TYPE, CREATE_POKEMON, ON_SEARCH } from "./actions-types";
+import { GET_POKEMONES, CLEAN_DETAIL, GET_POKEMONES_DETAIL, GET_TYPES, GET_SORT, GET_SORT_ATTACK, FROM_API, FILTER_BY_TYPE, CREATE_POKEMON, ON_SEARCH ,DELETE_POKEMONES} from "./actions-types";
 
 const initialState = {
   pokemones: [],
   pokemonesDetail: [],
   types: [],
-  filtered: []
+  filtered: [],
+  
 
 }
 
@@ -16,8 +17,16 @@ const reducer = (state = initialState, action) => {
         ...state,
         pokemones: action.payload,
         filtered: action.payload,
-
       }
+
+    case DELETE_POKEMONES:
+    const deleted= state.filtered.filter((poke)=>poke.id !== action.payload)
+      return{ 
+        ...state,
+        pokemones: [...deleted],
+        filtered:[...deleted]
+       }
+   
     case GET_POKEMONES_DETAIL:
       return {
         ...state,

@@ -1,6 +1,6 @@
 import { useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { getPokemones, getSort, getOrderAttack, fromApi, filterByTypes, getTypes } from '../../redux/actions'
+import { getPokemones, getSort, getOrderAttack, fromApi, filterByTypes, getTypes, } from '../../redux/actions'
 import Pokemones from '../Pokemones/Pokemones';
 import Paginado from '../paginado/Paginado';
 import Nav from '../Nav/Nav'
@@ -21,9 +21,9 @@ const Home =()=>{
         setCurrentPage(pageNumber)
     }
 
-    useEffect(() => {                            // ME TRAIGO DEL ESTADO CUANDO EL PERSONAJE SE MONTA
-        dispatch(getTypes())                      // es lo mismo del mapDispatchToProps
-        dispatch(getPokemones());
+    useEffect(() => { 
+         dispatch(getTypes())                         // ME TRAIGO DEL ESTADO CUANDO EL PERSONAJE SE MONTA
+        dispatch(getPokemones());  // es lo mismo del mapDispatchToProps   
          }, [dispatch]) // segundo paramentro donde mira, para que no haga loop infinito. MONTATE Y EJECUTATE SIEMPRE Y CUANDO PASE ESO 
     
     const getPokemonsHandler = (event) => {
@@ -70,7 +70,8 @@ const Home =()=>{
                 <button className={styles.button}onClick={(event) => { getPokemonsHandler(event) }}>Reset</button>
             </div>
             <Pokemones currentPokemones ={ currentPokemones} />
-            <Paginado pages={pages} pokemonesPerPage={pokemonesPerPage} allPokemones={allPokemones.length} />
+            <Paginado pages={pages} pokemonesPerPage={pokemonesPerPage} allPokemones={allPokemones.length} currentPage={currentPage} />
+
            </div>
        
     )

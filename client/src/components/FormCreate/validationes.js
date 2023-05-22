@@ -1,10 +1,10 @@
 const validation =(form)=>{
     const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
     let error ={};
-    if(!form.name){
+if(!form.name){
         error.name="Este campo es obligatorio"
     }
-    if(!form.image){
+if(!form.image){
         error.image="Este campo es obligatorio"
     }
 
