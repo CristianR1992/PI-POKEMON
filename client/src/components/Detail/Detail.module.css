@@ -1,12 +1,12 @@
 .card {
     position: relative;
    left: 35%;
-    width: 490px;
-    height: 600px;
+    width: 390px;
+    height: 500px;
     border-radius: 8px;
-    background-color: #e1ff00;
+    background-color: #000000;
     padding: 16px;
-    border: 5px solid #cbbcbc;
+    border: 9px inset #f3c614;
     transition: 0.5s ease-out;
     margin-top: 3%;
     
@@ -14,13 +14,17 @@
 
 .card:hover{
     transform: scale(1.05);
-    box-shadow: 4px -3px 41px 13px rgba(138,138,138,0.75);
-    -webkit-box-shadow: 4px -3px 41px 13px rgba(138,138,138,0.75);
-    -moz-box-shadow: 4px -3px 41px 13px rgba(138,138,138,0.75);
+    box-shadow: 2px 1px 85px -29px #f3c614;
+    -webkit-box-shadow: 2px 1px 85px -29px #f3c614;
+    -moz-box-shadow: 2px 1px 85px -29px #f3c614;
 }
+.card:hover .name {
+    color: #f3c614;
+    transition: color 0.3s ease-in-out;
+  }
 .image {
-    width: 200px;
-    height: 200px;
+    width: 175px;
+    height: 175px;
     object-fit: cover;
     border-radius: 30%;
     margin-bottom: 1rem;
@@ -33,15 +37,19 @@
 }
 
 .typesName {
-    font-size: 1.5rem;
-    color: #181818;
+    font-size: 1.2rem;
+    color: #fdfafa;
     font-weight: bold;
     text-transform: capitalize;
     margin-left: 60px;
 }
+.card:hover .typesName {
+    color: #f7cf06;
+    transition: color 0.3s ease-in-out;
+  }
 
 .type {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-right: 0px;
     margin-left: 50px;
     padding: 3px;
@@ -51,61 +59,58 @@
     text-transform: capitalize;
 }
 .name {
+    font-size: 1.5rem;
     position: absolute;
-    top: 50%;
+    top: 49%;
     left: 50%;
-    transform: translate(-50%, -300%);
+    transform: translate(-50%, -260%);
     color: white;
     text-align: center;
-}
+    white-space: nowrap; 
+   }
 
 
 .attack {
-    font-size: 1.5rem;
-    background-color: #f9fcf8;
-    color: #333;
-    font-weight: bold;
-
+    font-size: 1.2rem;
+    background-color: #fffafa;
+    color: #0e0e0e;
+    
 
 }
 
 .life {
-    font-size: 1.5rem;
-    background-color: #c58efd;
-    color: #333;
-    font-weight: bold;
+    font-size: 1.2rem;
+    background-color: #d4d1d7;
+    color: #050505;
+    
  
 }
 
 .defense {
-    font-size: 1.5rem;
-    background-color: #65e844;
-    color: #333;
-    font-weight: bold;
- 
+    font-size: 1.2rem;
+    background-color: #fffafa;
+    color: #0e0e0e;
+    
 }
 
 .speed {
-    font-size: 1.5rem;
-    background-color:#ffffff;
-    color: #333;
-    font-weight: bold;
+    font-size: 1.2rem;
+    background-color: #d4d1d7;
+    color: #050505;
 
 }
 
 .weight {
-    font-size: 1.5rem;
-    background-color:#c58efd;
-    color: #333;
-    font-weight: bold;
+    font-size: 1.2rem;
+    background-color: #fffafa;
+    color: #0e0e0e;
 
 }
 
 .height {
-    font-size: 1.5rem;
-    background-color:#65e844 ;
-    color: #333;
-    font-weight: bold;
+    font-size: 1.2rem;
+    background-color: #d4d1d7;
+    color: #050505;
     margin-bottom: 0;
 
 }

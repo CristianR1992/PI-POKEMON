@@ -25,15 +25,15 @@ const Detail = () => {
                     pokemonesDetails?.name ? (
                         <>
                             <img className={styles.image} src={pokemonesDetails?.image} alt="" />
-                            <h1 className={styles.name}>{pokemonesDetails?.name.toUpperCase()}</h1>
-                            <h2 className={styles.attack}>Attack ➟ {pokemonesDetails?.attack}</h2>
-                            <h2 className={styles.life}>Life ➟{pokemonesDetails?.life}</h2>
-                            <h2 className={styles.defense}>Defense ➟ {pokemonesDetails?.defense}</h2>
-                            <h2 className={styles.speed}>Speed ➟ {pokemonesDetails?.speed}</h2>
-                            <h2 className={styles.weight}>Weight ➟ {pokemonesDetails?.weight}</h2>
-                            <h2 className={styles.height}>Height ➟ {pokemonesDetails?.height}</h2>
+                            <h1 className={styles.name}>{pokemonesDetails?.name.toUpperCase()} </h1>
+                            <h2 className={styles.attack}>Attack ➟ {pokemonesDetails?.attack} %</h2>
+                            <h2 className={styles.life}>Life ➟ {pokemonesDetails?.life} %</h2>
+                            <h2 className={styles.defense}>Defense ➟ {pokemonesDetails?.defense} %</h2>
+                            <h2 className={styles.speed}>Speed ➟ {pokemonesDetails?.speed} km/h</h2>
+                            <h2 className={styles.weight}>Weight ➟ {pokemonesDetails?.weight} lb</h2>
+                            <h2 className={styles.height}>Height ➟ {pokemonesDetails?.height} cm</h2>
                             <div className={styles.typesContainer}>
-                                <h2 className={styles.typesName}>Types ➟</h2>
+                                <h2 className={styles.typesName}>Types  ➟</h2>
                                 <div className={styles.types}>
                                     {pokemonesDetails?.Types.map((type, index) => (
                                         <span key={index} className={styles.type}>{type.name}</span>

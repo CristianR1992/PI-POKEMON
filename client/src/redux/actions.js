@@ -65,13 +65,19 @@ export const filterByTypes=(type)=>{
 }
 
 export const createPokemon=(form)=>{
-    return async function(dispatch){
+    try {
+        return async function(dispatch){
        const response= await axios.post("http://localhost:3001/pokemon",form)
     return dispatch({
         type: CREATE_POKEMON,
         payload:response
     })
 }
+}
+        
+     catch (error) {
+        window.alert("Pokemon repetido")
+    } 
 }
 
 export const onSearch =(nameState)=>{

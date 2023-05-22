@@ -30,7 +30,7 @@ const SearchBar = () => {
 
     return (
         <div>
-            <input type="search" placeholder="Buscar Pokemon" value={nameState} onChange={handleSearch} />
+            <input type="search" placeholder="Buscar Pokemon..." value={nameState} onChange={handleSearch} />
             <button onClick={()=>{handlerClick(); setNameState('')}}></button>
             {error && <p className={styles.error}>{error}</p>}
         </div>
