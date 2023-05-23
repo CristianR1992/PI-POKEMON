@@ -35,7 +35,10 @@ const reducer = (state = initialState, action) => {
     case CLEAN_DETAIL:// lo uso para limpiar el estado cuando hay un bugs cuando se carga
       return {
         ...state,
-        pokemonesDetail: [] // cuando se ejecuta, devuelve el objeto vacio nuevamente
+        pokemonesDetail: [],                             
+        pokemones: [],
+        types: [],
+        filtered: [],
       }
 
     case GET_SORT:
@@ -124,7 +127,8 @@ const reducer = (state = initialState, action) => {
     case CREATE_POKEMON:
       return {
         ...state,
-        pokemones: [...state.pokemones, action.payload]
+        pokemones: [...state.pokemones, action.payload],
+       
       }
 
     case ON_SEARCH:

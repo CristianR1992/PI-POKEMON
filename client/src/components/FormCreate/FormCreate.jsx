@@ -4,6 +4,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { getTypes, createPokemon } from '../../redux/actions'
 import validation from './validationes.js'
 import styles from './FormCreate.module.css'
+import image1 from "./imagenes/61.png";
+import image2 from "./imagenes/64.png";
+import image3 from "./imagenes/68.png";
+import image4 from "./imagenes/79.png";
+import image5 from "./imagenes/99.png";
+import image6 from "./imagenes/505.png";
+import { cleanDetail } from "../../redux/actions";
 
 
 const FormCreate = () => {
@@ -11,100 +18,64 @@ const FormCreate = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch()
 
-    const [form, setForm] = useState({
-        name: '',
-        attack: 50,
-        defense: 50,
-        life: 50,
-        image: '',
-        speed: 50,
-        height: 50,
-        weight: 50,
-        types: []
-    })
-
-    const [error, setError] = useState({
-        name: '',
-        attack: '',
-        defense: '',
-        life: '',
-        image: '',
-        speed: '',
-        height: '',
-        weight: '',
-        types: []
-    })
+    const [form, setForm] = useState({ name: '', attack: 50, defense: 50, life: 50, image: '', speed: 50, height: 50, weight: 50, types: [] })
+    const [error, setError] = useState({ name: '', image: '', types: [] })
 
     useEffect(() => {
         dispatch(getTypes())
+        return () => dispatch(cleanDetail())
     }, [dispatch])
 
     const handleChange = (event) => {
         setForm({
             ...form,
-            [event.target.name]: event.target.value //si no conozco el nombre de la propiedad, accedo con el []
-        })
+            [event.target.name]: event.target.value})//si no conozco el nombre de la propiedad, accedo con el []
         setError(
             validation({
                 ...form,
-                [event.target.name]: event.target.value
-            })
-        )
-    }
-
+                [event.target.name]: event.target.value  }))   }
+          
     const handleTypeChange = (event) => {
         const { value, checked } = event.target;
         if (checked) {
             setForm((prevForm) => ({
                 ...prevForm,
-                types: [...prevForm.types, value],
-            }));
+                types: [...prevForm.types, value]}));
         } else {
             setForm((prevForm) => ({
                 ...prevForm,
-                types: prevForm.types.filter((type) => type !== value),
-            }));
-        }
-    };
+                types: prevForm.types.filter((type) => type !== value)  }));
+        }   
+        setError((prevErrors) => ({
+            ...prevErrors,
+            types: []
+          })); };
+   
+    const handleImageChange = (imagen) => {
+        setForm((prevForm) => ({
+            ...prevForm,
+            image: imagen}))
+            setError((prevErrors) => ({
+                ...prevErrors,
+                image: ""
+              }));      };
 
+   
     const handleSubmit = (event) => {
         event.preventDefault(); //para que no se recargue la pagina.
         dispatch(getTypes(event.target.value))
         dispatch(createPokemon(form))
-        navigate('/home') // ver de crear otra ruta, donde este el pokemon creado...          
+         navigate('/home') 
     }
-    const resetData=(event)=>{
+    const resetData = (event) => {
         event.preventDefault()
-        setForm({
-            name: '',
-            attack: 50,
-            defense: 50,
-            life: 50,
-            image: '',
-            speed: 50,
-            height: 50,
-            weight: 50,
-            types: []
-        })
-        setError({
-            name: '',
-            attack: '',
-            defense: '',
-            life: '',
-            image: '',
-            speed: '',
-            height: '',
-            weight: '',
-            types: []
-        })
-
+        setForm({ name: '', attack: 50, defense: 50, life: 50, image: '', speed: 50, height: 50, weight: 50, types: [] })
+        setError({ name: '', attack: '', defense: '', life: '', image: '', speed: '', height: '', weight: '', types: [] })
     }
 
     return (
-         
-    
         <form onSubmit={handleSubmit} className={styles.formContainer}>
-            <button onClick={resetData}className={styles.submitButton}>Data reset</button>
+            <button onClick={resetData} className={styles.submitButton}>Data reset</button>
             <div className={styles.inputContainer}>
                 <label htmlFor="name" className={styles.label}>Name:  <input type="text" name="name" value={form.name} onChange={handleChange} className={styles.input} /></label>
                 {error.name && <p className={styles.errorName}> {error.name}</p>}
@@ -129,9 +100,29 @@ const FormCreate = () => {
                         <input type="checkbox" name="types" checked={form.types.includes(type.name)} value={type.name} onChange={handleTypeChange} />  {type.name} </label>))}
                 {error.types && <p style={{ color: 'red' }}> {error.types}</p>}</div>
 
-            <label htmlFor="image"className={styles.label}>Image URL :  <input type="url" name="image" value={form.image} onChange={handleChange} /></label>
-            {error.image && <p style={{ color: 'red' }}> {error.image}</p>}
 
+                 {error.image && <p style={{ color: 'red' }}> {error.image}</p>}
+            <div className={styles.imageContainer}>
+                <label>
+                    <input type="radio" name="image" value={image1} checked={form.image === image1} onChange={() => { }} style={{ display: "none" }} />
+                    <img src={image1} alt="Imagen 1" className={form.image === image1 ? `${styles.image} ${styles.selected}` : styles.image} onClick={() => handleImageChange(image1)} /> </label>
+                <label>
+                    <input type="radio" name="image" value={image2} checked={form.image === image2} onChange={() => { }} style={{ display: "none" }} />
+                    <img src={image2} alt="Imagen 2" className={form.image === image2 ? `${styles.image} ${styles.selected}` : styles.image} onClick={() => handleImageChange(image2)} /> </label>
+                <label>
+                    <input type="radio" name="image" value={image3} checked={form.image === image3} onChange={() => { }} style={{ display: "none" }} />
+                    <img src={image3} alt="Imagen 3" className={form.image === image3 ? `${styles.image} ${styles.selected}` : styles.image} onClick={() => handleImageChange(image3)} /> </label>
+                <label>
+                    <input type="radio" name="image" value={image4} checked={form.image === image4} onChange={() => { }} style={{ display: "none" }} />
+                    <img src={image4} alt="Imagen 4" className={form.image === image4 ? `${styles.image} ${styles.selected}` : styles.image} onClick={() => handleImageChange(image4)} /> </label>
+                <label>
+                    <input type="radio" name="image" value={image5} checked={form.image === image5} onChange={() => { }} style={{ display: "none" }} />
+                    <img src={image5} alt="Imagen 5" className={form.image === image5 ? `${styles.image} ${styles.selected}` : styles.image} onClick={() => handleImageChange(image5)} /> </label>
+                <label>
+                    <input type="radio" name="image" value={image6} checked={form.image === image6} onChange={() => { }} style={{ display: "none" }} />
+                    <img src={image6} alt="Imagen 6" className={form.image === image6 ? `${styles.image} ${styles.selected}` : styles.image} onClick={() => handleImageChange(image6)} /> </label>
+
+            </div>
             <button className={styles.submitButton} disabled={Object.keys(error).length > 0} type="submit">Create Pokemon</button>
 
         </form>

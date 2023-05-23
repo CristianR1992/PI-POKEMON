@@ -1,11 +1,10 @@
 const validation =(form)=>{
-    const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
     let error ={};
 if(!form.name){
         error.name="Este campo es obligatorio"
     }
-if(!form.image){
-        error.image="Este campo es obligatorio"
+ if(!form.image){
+    error.image="Seleccione una imagen"
     }
 
 if(form.name.length >20){
@@ -18,12 +17,7 @@ if(form.types.length=== 0){
     error.types ="Seleccione al menos un type"
 }
 
-
-if(!urlRegex.test(form.image)){
-    error.image="Se requiere una URL correcta" }
-
-
-    return error;
+ return error;
 
 }
 
