@@ -4,7 +4,7 @@ import axios from 'axios'
 
 export const getPokemones = ()=>{
 return async function(dispatch){
-        const response = await axios.get("http://localhost:3001/pokemon")
+        const response = await axios.get("/pokemon")
        return dispatch ({
         type:GET_POKEMONES,
         payload: response.data
@@ -13,7 +13,7 @@ return async function(dispatch){
 
 export const getPokemonesDetail = (id)=>{
     return async function (dispatch){
-        const response = await axios.get(`http://localhost:3001/pokemon/${id}`)
+        const response = await axios.get(`/pokemon/${id}`)
         return dispatch({
             type: GET_POKEMONES_DETAIL,
             payload: response.data
@@ -28,7 +28,7 @@ export const cleanDetail = ()=>{ //limpio ele stado en la parte de detalle
 
 export const getTypes = ()=>{
     return async function (dispatch){
-        const response = await axios.get("http://localhost:3001/types")
+        const response = await axios.get("/types")
         return dispatch ({
             type:GET_TYPES,
             payload:response.data
@@ -67,7 +67,7 @@ export const filterByTypes=(type)=>{
 export const createPokemon=(form)=>{
     try {
         return async function(dispatch){
-       const response= await axios.post("http://localhost:3001/pokemon",form)
+       const response= await axios.post("/pokemon",form)
     return dispatch({
         type: CREATE_POKEMON,
         payload:response
@@ -82,7 +82,7 @@ export const createPokemon=(form)=>{
 
 export const onSearch =(nameState)=>{
     return async function(dispatch){
-        const response = await axios.get(`http://localhost:3001/pokemon/name?name=${nameState}`)
+        const response = await axios.get(`/pokemon/name?name=${nameState}`)
       return dispatch({
         type:ON_SEARCH,
         payload:response.data
@@ -92,7 +92,7 @@ export const onSearch =(nameState)=>{
 
 export const deletePokemones = (id)=>{
     return async function (dispatch){
-        const response = await axios.delete(`http://localhost:3001/pokemon/delete/${id}`)
+        const response = await axios.delete(`/pokemon/delete/${id}`)
         return dispatch({
             type:DELETE_POKEMONES,
             payload:response.data

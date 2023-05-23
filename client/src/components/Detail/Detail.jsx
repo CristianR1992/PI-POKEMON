@@ -43,7 +43,7 @@ const Detail = () => {
 
                         </>
                     ) : (
-                        <h2>Loading...</h2>
+                        <h2 className={styles.h2}>Loading...</h2>
                     )}
             </div>
         </div>
