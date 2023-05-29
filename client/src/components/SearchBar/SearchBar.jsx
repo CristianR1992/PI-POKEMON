@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux"
 import styles from './SearchBar.module.css';
 
 
+
 const SearchBar = () => {
 
     const dispatch = useDispatch()
@@ -18,7 +19,7 @@ const SearchBar = () => {
 
     const handlerClick = async () => {
         if (nameState.trim() === '') { //quito los espacios vacios
-            setError("Ingreso un nombre para la busqueda")
+            setError("Ingrese un nombre para la busqueda")
         } else {
             try {
                 await dispatch(onSearch(nameState))
@@ -33,6 +34,7 @@ const SearchBar = () => {
             <input type="search" placeholder="Buscar Pokemon..." value={nameState} onChange={handleSearch} />
             <button onClick={()=>{handlerClick(); setNameState('')}}></button>
             {error && <p className={styles.error}>{error}</p>}
+            
         </div>
     )
 }

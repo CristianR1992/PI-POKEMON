@@ -1,0 +1,49 @@
+.background {
+    background-image: url("fondo.png");
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+    background-size: cover;
+  }
+  
+  .button {
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    border-radius: 20px;
+    background-color: #0fba40;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    height: 30em;
+    padding-right: 12em;
+  }
+  
+  .box {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+    text-align: center;
+  }
+
+ .title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  

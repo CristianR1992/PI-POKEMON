@@ -1,10 +1,11 @@
-import { GET_POKEMONES, CLEAN_DETAIL, GET_POKEMONES_DETAIL, GET_TYPES, GET_SORT, GET_SORT_ATTACK, FROM_API, FILTER_BY_TYPE, CREATE_POKEMON, ON_SEARCH ,DELETE_POKEMONES} from "./actions-types";
+import { GET_POKEMONES, CLEAN_DETAIL, GET_POKEMONES_DETAIL, GET_TYPES, GET_SORT, GET_SORT_ATTACK, FROM_API, FILTER_BY_TYPE, CREATE_POKEMON, ON_SEARCH ,DELETE_POKEMONES, REGISTER} from "./actions-types";
 
 const initialState = {
   pokemones: [],
   pokemonesDetail: [],
   types: [],
   filtered: [],
+  user:[]
   
 
 }
@@ -32,7 +33,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         pokemonesDetail: action.payload
       }
-    case CLEAN_DETAIL:// lo uso para limpiar el estado cuando hay un bugs cuando se carga
+    case CLEAN_DETAIL:
       return {
         ...state,
         pokemonesDetail: [],                             
@@ -47,8 +48,8 @@ const reducer = (state = initialState, action) => {
         const nameA = a.name.toLowerCase();
         const nameB = b.name.toLowerCase();
         if (action.payload === "A") {
-          if (nameA < nameB) return -1;
-          if (nameA > nameB) return 1;
+          if (nameA < nameB) return -1; //a-b
+          if (nameA > nameB) return 1; //b-a
           return 0;
         } else {
           if (nameA > nameB) return -1;
@@ -151,6 +152,11 @@ const reducer = (state = initialState, action) => {
       } catch (error) {
         throw new Error("Personaje no enontrado")
       }
+      case REGISTER:
+        return{
+          ...state,
+          user: [...state.user,action.payload]
+        }
 
     default:
       return { ...state }

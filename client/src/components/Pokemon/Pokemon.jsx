@@ -22,6 +22,7 @@ const Pokemon = (pokemon) => {
             </Link>
             <h2 className={styles.name}>{pokemon.name}</h2>
             <h2 className={styles.types}>{types}</h2>
+            <h3>{pokemon.attack}</h3>
         </div>
     );
 };

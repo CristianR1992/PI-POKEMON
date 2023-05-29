@@ -92,6 +92,7 @@
     width: 150px;
     height: 150px;
     border-radius: 15%;
+    cursor: pointer;
   }
   .selected {
     border: 4px solid  #008bf8;

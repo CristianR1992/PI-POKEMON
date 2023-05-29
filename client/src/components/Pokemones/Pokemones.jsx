@@ -6,8 +6,8 @@ const Pokemones = ({ currentPokemones }) => {
   return (
     <div className={styles.container}>
     
-      {currentPokemones.map(({ name, id, image,Types }) => (
-        <Pokemon key={`${id}-${name}`} name={name} image={image} id={id} Types={Types &&Types.map((type)=>type.name)}/>
+      {currentPokemones.map(({ name, id, image,Types, attack }) => (
+        <Pokemon key={`${id}-${name}`} name={name} image={image} id={id} attack={attack} Types={Types &&Types.map((type)=>type.name)}/>
       ))}
     </div>
   )

@@ -5,10 +5,10 @@ import Pokemones from '../Pokemones/Pokemones';
 import Paginado from '../paginado/Paginado';
 import Nav from '../Nav/Nav'
 import styles from'./Home.module.css'
-
+import { cleanDetail } from "../../redux/actions";
 const Home =()=>{
     const dispatch = useDispatch()
-    const allPokemones = useSelector((state) => state.pokemones)                         // es lo mismo que el mapStateToProps..  TE TRAE TODO LO QUE ESTA EN EL ESTADO POKEMONS
+    const allPokemones = useSelector((state) => state.pokemones) // es lo mismo que el mapStateToProps..
     const types = useSelector((state) => state.types);
    
     const [currentPage,setCurrentPage]=useState(1)
@@ -22,9 +22,10 @@ const Home =()=>{
     }
 
     useEffect(() => { 
-         dispatch(getTypes())                                                  // ME TRAIGO DEL ESTADO CUANDO EL PERSONAJE SE MONTA
-        dispatch(getPokemones());                                             // es lo mismo del mapDispatchToProps   
-         }, [ dispatch])                                                          // segundo paramentro donde mira, para que no haga loop infinito. MONTATE Y EJECUTATE SIEMPRE Y CUANDO PASE ESO 
+        dispatch(getPokemones());         // ME TRAIGO DEL ESTADO CUANDO EL PERSONAJE SE MONTA
+           dispatch(getTypes())                
+        return () => dispatch(cleanDetail())
+    }, [ dispatch])                       // segundo paramentro donde mira, para que no haga loop infinito. MONTATE Y EJECUTATE SIEMPRE Y CUANDO PASE ESO 
     
     const getPokemonsHandler = (event) => {
         event.preventDefault();

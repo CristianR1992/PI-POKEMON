@@ -4,10 +4,14 @@ import { Link } from 'react-router-dom';
 import logo from './logo.png';
 import pokebola from './pokebola.png'
 import { useLocation } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const NavBar = () => {
   const location = useLocation();
-
+  const {  logout } = useAuth0();
+  const handleLogout = () => {
+    logout({ returnTo: window.location.origin });
+  };
   return (
     <nav className={styles.header}>
       <Link to="/home" className={styles.home}>
@@ -28,6 +32,7 @@ const NavBar = () => {
           <div className={styles.searchBar}>
             <SearchBar />
           </div>
+          <button onClick={handleLogout}>LogOut</button>
         </>
       ) : null}
     </nav>
