@@ -1,4 +1,4 @@
-import { GET_POKEMONES, CLEAN_DETAIL, GET_POKEMONES_DETAIL, GET_TYPES, GET_SORT, GET_SORT_ATTACK, FROM_API,FILTER_BY_TYPE, CREATE_POKEMON, ON_SEARCH, DELETE_POKEMONES, REGISTER} from "./actions-types";
+import { GET_POKEMONES, CLEAN_DETAIL, GET_POKEMONES_DETAIL, GET_TYPES, GET_SORT, GET_SORT_ATTACK, FROM_API,FILTER_BY_TYPE, CREATE_POKEMON, ON_SEARCH, DELETE_POKEMONES, REGISTER, LOGIN_FN} from "./actions-types";
 import axios from 'axios'
 
 
@@ -106,6 +106,16 @@ export const registrarse=(register)=>{
         return dispatch({
             type:REGISTER,
             payload: response
+        })
+    }
+}
+
+export const loginFn=(login)=>{
+    return async function (dispatch){
+        const response = await axios.post("/login", login)
+        return dispatch({
+            type:LOGIN_FN,
+            payload:response.data
         })
     }
 }

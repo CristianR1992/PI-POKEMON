@@ -28,8 +28,9 @@ const LandingPage = () => {
           <h1 className={styles.title}>Bienvenido a mi PI Pokemon</h1>
           <button className={styles.button} onClick={handleLogin}>Login</button>
           <>
+            <Link to="/login"><button className={styles.button}>Login Manual</button></Link> 
             <Link to="/registro"><button className={styles.button}>Registrar</button> </Link>
-          </>
+        </>
 
  </div>
       </div>

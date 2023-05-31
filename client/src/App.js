@@ -5,13 +5,15 @@ import Home from './components/Home/Home';
 import Detail from './components/Detail/Detail.jsx';
 import NavBar from './components/Nav/Nav';
 import axios from 'axios';
-import Register from './components/SearchBar/Register/Register';
+import Register from './components/Register/Register';
+import Login from './components/Login/Login';
 axios.defaults.baseURL = 'http://localhost:3001'
 function App() {
   return (
     <div>
       <Routes>
         <Route path='/' element= {<LandindPage/>}/>
+        <Route exact path='/login' element= {<Login />}/>
         <Route exact path='/registro' element= {<Register />}/>
         <Route exact path='/home' element= {<Home />}/>
         <Route path='/home/:id' element= {<> <NavBar /><Detail/></>}/>

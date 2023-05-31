@@ -1,10 +1,11 @@
 const { login, register } = require('../controllers/userController');
 
 const loginHandler = async (req, res) => {
-const {nickname,email,password} = req.body 
+const {email,password} = req.body 
 try {
-     const userLogin = await login(nickname,email,password);
+     const userLogin = await login(email,password);
   res.status(200).json(userLogin);
+  console.log(userLogin)
 } catch (error) {
     res.status(400).json({error:error.message})
 }

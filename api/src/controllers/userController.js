@@ -1,16 +1,18 @@
 const {User } = require('../db.js')
 
-const login = async (nickname,email,password) => {
+const login = async (email,password) => {
       
     try {
      
       const user = await User.findOne({ where: { email, password } });
       if (!user) {
         throw new Error("Credenciales inválidas"); // El usuario no existe en la base de datos
-        }
-         return "Login EXITOSO"
+        } 
+        console.log("Login Exitoso")
+         return ({ access: true })
+     
     } catch (error) {
-      throw new Error(error.message);
+      throw new Error("Error al iniciar sesion");
     }
   };
   

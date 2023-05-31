@@ -4,7 +4,7 @@ const {registerHandler, loginHandler } = require('../handler/userHandler');
 const router = Router()
 
 
-router.post("/", loginHandler)
+router.post("/login", loginHandler)
 
 router.post("/register", registerHandler)
 
