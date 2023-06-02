@@ -17,6 +17,7 @@ const NavBar = () => {
     dispatch(clearLogin())
   };
   return (
+    
     <nav className={styles.header}>
       <Link to="/home" className={styles.home}>
         Home

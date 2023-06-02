@@ -105,8 +105,7 @@ const createPokemon = async (name, image, life, attack, defense, speed, height, 
       weight,
       types,
       fromBDD:true
-     
-    })
+         })
    
     const pokemonTypes = await Types.findAll({
       where: { name: types },
