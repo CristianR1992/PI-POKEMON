@@ -40,20 +40,19 @@ const Register = () => {
       <div className={styles.background}>
         <div className={styles.container}>
           <div className={styles.box}>
-          <Link to="/"><button>⬅ back</button></Link>
+          <Link to="/"><button className={styles.buttonBack}>⬅</button></Link>
             <h1 className={styles.title}>Bienvenido al Registro</h1>
             <label htmlFor="nickname">Nickname: <input type="text" name="nickname" value={register.nickname} onChange={handleChange} /></label>
             {error.nickname && <p> {error.nickname}</p>}
-            <br />
+    
             <label htmlFor="email">Email: <input type="text" name="email" value={register.email} onChange={handleChange} /></label>
             {error.email && <p> {error.email}</p>}
-            <br />
+         
             <label htmlFor="password"> Password <input type="password" name="password" value={register.password} onChange={handleChange} /></label>
             {error.password && <p> {error.password}</p>}
+          
             <br />
-
-            <br />
-            <button className={styles.button}disabled={Object.keys(error).length > 0} type="submit">Registrarse</button>
+            <button className={styles.button} type="submit">Registrarse</button>
           </div>
         </div>
       </div>

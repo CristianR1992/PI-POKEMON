@@ -1,15 +1,15 @@
 .background {
-    background-image: url("fondo.png");
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    z-index: -1;
-    background-size: cover;
-  }
-  
+  background-image: url("fondo2.jpg");
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+}
   .button {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
     cursor: pointer;
@@ -20,6 +20,9 @@
     border: none;
     font-size: 16px;
     transition: background-color 0.3s ease;
+    width: 60%;
+    margin-bottom: 5px;
+    align-self: center;
   }
   
   .button:hover {
@@ -27,23 +30,42 @@
   }
   
   .container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
-    justify-content: right;
+    justify-content: center;
     align-items: center;
-    height: 30em;
-    padding-right: 12em;
+    height: 100vh;
+    width: 90%;
+    max-width: 400px;
   }
   
   .box {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
     background-color: #f0f0f0;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
     text-align: center;
   }
-
- .title {
+  
+  .title {
     font-size: 24px;
     margin-bottom: 20px;
   }
   
+  .box input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  /* Media Query para pantallas más grandes */
+  @media (min-width: 768px) {
+    .container {
+      max-width: 500px;
+    }
+  }

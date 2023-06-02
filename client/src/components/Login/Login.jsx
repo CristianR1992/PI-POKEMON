@@ -36,7 +36,7 @@ const Login = () => {
         <div className={styles.background}>
              <div className={styles.container}>
                  <div className={styles.box}> 
-                 <Link to="/"><button>⬅ back</button></Link>
+                 <Link to="/"><button className={styles.buttonBack}>⬅</button></Link>
                  <h1 className={styles.title}>Ingrese sus Datos</h1>
                  <label htmlFor="email">Email: <input type="text" value={login.email} name="email" onChange={handlerChange} /></label>
             <br />
