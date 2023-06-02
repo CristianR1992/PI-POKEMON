@@ -1,4 +1,4 @@
-import { GET_POKEMONES, CLEAN_DETAIL, GET_POKEMONES_DETAIL, GET_TYPES, GET_SORT, GET_SORT_ATTACK, FROM_API,FILTER_BY_TYPE, CREATE_POKEMON, ON_SEARCH, DELETE_POKEMONES, REGISTER, LOGIN_FN} from "./actions-types";
+import { GET_POKEMONES, CLEAN_DETAIL, GET_POKEMONES_DETAIL, GET_TYPES, GET_SORT, GET_SORT_ATTACK, FROM_API,FILTER_BY_TYPE, CREATE_POKEMON, ON_SEARCH, DELETE_POKEMONES, REGISTER, LOGIN_FN, CLEAR_LOGIN} from "./actions-types";
 import axios from 'axios'
 
 
@@ -118,4 +118,9 @@ export const loginFn=(login)=>{
             payload:response.data
         })
     }
+}
+
+export const clearLogin = ()=>{ //limpio ele stado en la parte de detalle
+    return{type:CLEAR_LOGIN}
+
 }
