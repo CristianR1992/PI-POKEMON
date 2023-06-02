@@ -1,12 +1,14 @@
-import { GET_POKEMONES, CLEAN_DETAIL, GET_POKEMONES_DETAIL, GET_TYPES, GET_SORT, GET_SORT_ATTACK, FROM_API, FILTER_BY_TYPE, CREATE_POKEMON, ON_SEARCH ,DELETE_POKEMONES, REGISTER, LOGIN_FN, CLEAR_LOGIN} from "./actions-types";
+import { GET_POKEMONES, CLEAN_DETAIL, GET_POKEMONES_DETAIL, GET_TYPES, GET_SORT, GET_SORT_ATTACK, FROM_API, FILTER_BY_TYPE, CREATE_POKEMON, ON_SEARCH ,DELETE_POKEMONES, REGISTER, LOGIN_FN, LOGOUT} from "./actions-types";
 
 const initialState = {
   pokemones: [],
   pokemonesDetail: [],
   types: [],
   filtered: [],
-  user:[],
-  userLogin:[]
+  userLogin: {
+    access: false, 
+  },
+  isAuthenticated: false
   
 
 }
@@ -153,21 +155,32 @@ const reducer = (state = initialState, action) => {
       } catch (error) {
         throw new Error("Personaje no enontrado")
       }
-      case REGISTER:
-        return{
-          ...state,
-          user: [...state.user,action.payload]
-        }
-      case LOGIN_FN:
-        return{
-          ...state,
-          userLogin:[...state.userLogin, action.payload]
-        }
-      case CLEAR_LOGIN:
-        return{
-          userLogin:[]
-        }
+     case REGISTER:
+  return {
+    ...state,
+    userLogin: {
+      ...state.userLogin,
+      access: true, // Actualizar el estado userLogin.access
+    },
+  };
 
+      
+      case LOGIN_FN:
+        return {
+          ...state,
+          isAuthenticated: true
+        }
+      
+        case LOGOUT:
+          return {
+            ...state,
+            userLogin: {
+              access: false
+            },
+            isAuthenticated: false
+          };
+    
+    
     default:
       return { ...state }
   }

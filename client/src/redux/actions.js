@@ -1,4 +1,4 @@
-import { GET_POKEMONES, CLEAN_DETAIL, GET_POKEMONES_DETAIL, GET_TYPES, GET_SORT, GET_SORT_ATTACK, FROM_API,FILTER_BY_TYPE, CREATE_POKEMON, ON_SEARCH, DELETE_POKEMONES, REGISTER, LOGIN_FN, CLEAR_LOGIN} from "./actions-types";
+import { GET_POKEMONES, CLEAN_DETAIL, GET_POKEMONES_DETAIL, GET_TYPES, GET_SORT, GET_SORT_ATTACK, FROM_API,FILTER_BY_TYPE, CREATE_POKEMON, ON_SEARCH, DELETE_POKEMONES, REGISTER, LOGIN_FN,LOGOUT} from "./actions-types";
 import axios from 'axios'
 
 
@@ -100,27 +100,74 @@ export const deletePokemones = (id)=>{
     }
 } 
 
-export const registrarse=(register)=>{
-    return async function(dispatch){
-        const response = await axios.post("/register",register)
+export const registrarse = (register) => {
+    return async function (dispatch) {
+      try {
+        const response = await axios.post("/register", register);
+        const userData = response.data; // Extraer los datos del usuario registrado
         return dispatch({
-            type:REGISTER,
-            payload: response
-        })
-    }
-}
+          type: REGISTER,
+          payload: userData, // Pasar los datos del usuario registrado como payload
+        });
+      } catch (error) {
+        console.error("Error al registrar:", error);
+        throw error; // Lanzar el error para que pueda ser capturado en el componente
+      }
+    };
+  };
+  
 
 export const loginFn=(login)=>{
-    return async function (dispatch){
-        const response = await axios.post("/login", login)
+    return async function (dispatch){    
+try {
+    const response = await axios.post("/login", login)
+        if (response.data.access === true) {
+            localStorage.setItem('token', response.data.token); //guardo el token en el localstorage
         return dispatch({
             type:LOGIN_FN,
             payload:response.data
         })
     }
+} catch (error) {
+    return error
 }
+    }}
 
-export const clearLogin = ()=>{ //limpio ele stado en la parte de detalle
-    return{type:CLEAR_LOGIN}
 
-}
+    export const validateToken = (token) => {
+        return async (dispatch) => {
+          try {
+            const response = await axios.post('/validateToken', null, {
+              headers: {
+                Authorization: token,
+              },
+            });
+      
+            const { validate } = response.data;
+            if (validate) {
+              dispatch({
+                type: LOGIN_FN,
+                payload: { access: true },
+              });
+            } else {
+              console.log('El token no es válido');
+            }
+          } catch (error) {
+            console.error('Error al validar el token:', error);
+          }
+        };
+      };
+      
+
+    export const logOut = () => {
+        return async (dispatch) => {
+          try {
+            dispatch({
+              type: LOGOUT
+            });
+          } catch (error) {
+            console.error('Error al realizar el logout:', error);
+          }
+        };
+      };
+    

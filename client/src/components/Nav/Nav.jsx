@@ -6,15 +6,16 @@ import pokebola from './pokebola.png'
 import { useLocation } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import { useDispatch } from 'react-redux';
-import{ clearLogin} from '../../redux/actions'
+import {logOut} from '../../redux/actions'
+
 
 const NavBar = () => {
   const location = useLocation();
   const dispatch = useDispatch()
   const {  logout } = useAuth0();
-  const handleLogout = () => {
-    logout({ returnTo: window.location.origin });
-    dispatch(clearLogin())
+  const handleLogout = async() => {
+       await dispatch(logOut())
+
   };
   return (
     

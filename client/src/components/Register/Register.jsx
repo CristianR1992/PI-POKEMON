@@ -30,10 +30,15 @@ const Register = () => {
     }));
   };
   
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault()
-    dispatch(registrarse(register))
+    try {
+       await dispatch (registrarse(register))
     navigate('/home')
+    } catch (error) {
+      alert("Algun dato es invalido")
+    }
+   
   }
   return (
     <form onSubmit={handleSubmit}>
