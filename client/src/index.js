@@ -7,7 +7,9 @@ import { BrowserRouter} from 'react-router-dom'
 import store from './redux/store';
 import { Provider } from 'react-redux'; 
 import {Auth0Provider} from "@auth0/auth0-react"
-
+import axios from 'axios';
+// axios.defaults.baseURL = 'http://localhost:3001'
+axios.defaults.baseURL = 'https://pi-pokemon-production-f7b2.up.railway.app'
 ReactDOM.render(
   <Provider store={store}>
   <Auth0Provider domain= "dev-yriwhkqxe3fwzb87.us.auth0.com" clientId='wxHA1T23heVQ87BUBvmShgtOVuI2cDFs'   redirectUri={window.location.origin}>
