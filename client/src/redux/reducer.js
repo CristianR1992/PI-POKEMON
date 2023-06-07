@@ -162,6 +162,7 @@ const reducer = (state = initialState, action) => {
       ...state.userLogin,
       access: true, // Actualizar el estado userLogin.access
     },
+    isAuthenticated: true
   };
 
       

@@ -5,8 +5,6 @@ import { loginFn } from '../../redux/actions'
 import styles from './Login.module.css'
 import { Link } from "react-router-dom"
 
-
-
 const Login = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()

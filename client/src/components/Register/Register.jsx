@@ -16,46 +16,51 @@ const Register = () => {
 
 
   const handleChange = (event) => {
-  
+
     setRegister(() => ({
       ...register,
       [event.target.name]: event.target.value
     }));
-  
-    const fieldError = validaciones({ ...register,  [event.target.name]: event.target.value });
-  
+
+    const fieldError = validaciones({ ...register, [event.target.name]: event.target.value });
+
     setError(() => ({
       ...error,
       [event.target.name]: fieldError[event.target.name] // Accede al mensaje de error específico por el nombre del campo
     }));
   };
-  
-  const handleSubmit = async(event) => {
-    event.preventDefault()
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     try {
-       await dispatch (registrarse(register))
-    navigate('/home')
+      const registerResponse = await dispatch(registrarse(register));
+      console.log(registerResponse.payload.access);
+      if (registerResponse.payload.access === true) {
+        navigate('/home');
+      } else {
+        throw new Error("Usuario ya registrado con ese email");
+      }
     } catch (error) {
-      alert("Algun dato es invalido")
+      alert(error.message);
     }
-   
-  }
+  };
+  
   return (
     <form onSubmit={handleSubmit}>
       <div className={styles.background}>
         <div className={styles.container}>
           <div className={styles.box}>
-          <Link to="/"><button className={styles.buttonBack}>⬅</button></Link>
+            <Link to="/"><button className={styles.buttonBack}>⬅</button></Link>
             <h1 className={styles.title}>Bienvenido al Registro</h1>
             <label htmlFor="nickname">Nickname: <input type="text" name="nickname" value={register.nickname} onChange={handleChange} /></label>
             {error.nickname && <p> {error.nickname}</p>}
-    
+
             <label htmlFor="email">Email: <input type="text" name="email" value={register.email} onChange={handleChange} /></label>
             {error.email && <p> {error.email}</p>}
-         
+
             <label htmlFor="password"> Password <input type="password" name="password" value={register.password} onChange={handleChange} /></label>
             {error.password && <p> {error.password}</p>}
-          
+
             <br />
             <button className={styles.button} type="submit">Registrarse</button>
           </div>

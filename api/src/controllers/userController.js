@@ -15,24 +15,24 @@ const login = async (email, password) => {
   }
 };
 
-const validateToken = async (req, res) =>{
+const validateToken = async (req, res) => {
   const token = req.headers.authorization;
   if (!token) {
     return res.status(401).json({ message: 'No se proporcionó un token de autenticación' });
   }
 
   try {
-      jwt.verify(token, SECRET_KEY); //en esta linea valido el token
-      return res.status(200).json({ validate: true });
-    } catch (error) {
-      return res.status(401).json({ validate: false });
-    }
+    const decodedToken = jwt.verify(token, SECRET_KEY);
+    return res.status(200).json({ validate: true, decodedToken });
+  } catch (error) {
+    return res.status(401).json({ validate: false });
+  }
+};
 
-}
 
 const register = async (nickname, email, password) => {
   try {
-    if (!nickname || !email || !password) throw new Error('Faltan datos obligatorios');
+   
     const userRegistered = await User.findOne({
       where: { email: email },
     });
@@ -44,9 +44,9 @@ const register = async (nickname, email, password) => {
       email,
       password,
     });
-    return newUser;
+    return {access:true};
   } catch (error) {
-    return { error: error.message };
+    throw new Error('Error al registrar al usuario');
   }
 };
 
