@@ -38,11 +38,11 @@ const Register = () => {
       if (registerResponse.payload.access === true) {
         navigate('/home');
       } else {
-        throw new Error("Usuario ya registrado con ese email");
+        alert("Usuario ya registrado con ese email");
       }
     } catch (error) {
-      alert(error.message);
-    }
+      
+    } alert("Usuario ya registrado con ese email");
   };
   
   return (
