@@ -9,7 +9,7 @@ const Login = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const [login, setLogin] = useState({ email: '', password: '' })
- 
+
 
     const handlerChange = (event) => {
         setLogin({
@@ -17,38 +17,40 @@ const Login = () => {
             [event.target.name]: event.target.value
         })
     }
-    const handlerSubmit =async (event) => {
+    const handlerSubmit = async (event) => {
         event.preventDefault()
-      try {
-        const loginResponse =await dispatch(loginFn(login))
-       if(loginResponse.payload.access === true){
-        navigate('/home')
-      }  
-      } catch {
-         alert("Algun dato es invalido")
-      }
+        try {
+            const loginResponse = await dispatch(loginFn(login))
+
+            if (loginResponse.payload.access === true) {
+
+                navigate('/home')
+            }
+        } catch {
+            alert("Algun dato es invalido")
+        }
     }
 
     return (
-    <form onSubmit={handlerSubmit}>
-        <div className={styles.background}>
-             <div className={styles.container}>
-                 <div className={styles.box}> 
-                 <Link to="/"><button className={styles.buttonBack}>⬅</button></Link>
-                 <h1 className={styles.title}>Ingrese sus Datos</h1>
-                 <label htmlFor="email">Email: <input type="text" value={login.email} name="email" onChange={handlerChange} /></label>
-            <br />
-                 <label htmlFor="password">Password: <input type="password" name="password" value={login.password} onChange={handlerChange} /></label>
-             <br />
+        <form onSubmit={handlerSubmit}>
+            <div className={styles.background}>
+                <div className={styles.container}>
+                    <div className={styles.box}>
+                        <Link to="/"><button className={styles.buttonBack}>⬅</button></Link>
+                        <h1 className={styles.title}>Ingrese sus Datos</h1>
+                        <label htmlFor="email">Email: <input type="text" value={login.email} name="email" onChange={handlerChange} /></label>
+                        <br />
+                        <label htmlFor="password">Password: <input type="password" name="password" value={login.password} onChange={handlerChange} /></label>
+                        <br />
 
-             <br />
-                  <button className={styles.button} type="submit">Login</button>
-                 
-               
-                 </div>
+                        <br />
+                        <button className={styles.button} type="submit">Login</button>
+
+
+                    </div>
+                </div>
             </div>
-         </div>
-     </form>
+        </form>
     )
 }
 

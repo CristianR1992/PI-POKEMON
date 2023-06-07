@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from "react-redux";
-import { registrarse } from '../../redux/actions'
+import { useDispatch, useSelector } from "react-redux";
+import { registrarse,} from '../../redux/actions'
 import styles from './Register.module.css';
 import { Link } from 'react-router-dom';
 import validaciones from './Validaciones';
@@ -13,7 +13,6 @@ const Register = () => {
   const dispatch = useDispatch()
   const [register, setRegister] = useState({ nickname: '', email: '', password: '' })
   const [error, setError] = useState({ nickname: '', email: '', password: '' })
-
 
   const handleChange = (event) => {
 

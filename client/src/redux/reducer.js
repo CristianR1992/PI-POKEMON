@@ -1,4 +1,4 @@
-import { GET_POKEMONES, CLEAN_DETAIL, GET_POKEMONES_DETAIL, GET_TYPES, GET_SORT, GET_SORT_ATTACK, FROM_API, FILTER_BY_TYPE, CREATE_POKEMON, ON_SEARCH ,DELETE_POKEMONES, REGISTER, LOGIN_FN, LOGOUT} from "./actions-types";
+import { GET_POKEMONES, CLEAN_DETAIL, GET_POKEMONES_DETAIL, GET_TYPES, GET_SORT, GET_SORT_ATTACK, FROM_API, FILTER_BY_TYPE, CREATE_POKEMON, ON_SEARCH, DELETE_POKEMONES, REGISTER, LOGIN_FN, LOGOUT } from "./actions-types";
 
 const initialState = {
   pokemones: [],
@@ -6,10 +6,11 @@ const initialState = {
   types: [],
   filtered: [],
   userLogin: {
-    access: false, 
+    access: false,
+  
   },
   isAuthenticated: false
-  
+
 
 }
 
@@ -24,13 +25,13 @@ const reducer = (state = initialState, action) => {
       }
 
     case DELETE_POKEMONES:
-    const deleted= state.filtered.filter((poke)=>poke.id !== action.payload)
-      return{ 
+      const deleted = state.filtered.filter((poke) => poke.id !== action.payload)
+      return {
         ...state,
         pokemones: [...deleted],
-        filtered:[...deleted]
-       }
-   
+        filtered: [...deleted]
+      }
+
     case GET_POKEMONES_DETAIL:
       return {
         ...state,
@@ -39,7 +40,7 @@ const reducer = (state = initialState, action) => {
     case CLEAN_DETAIL:
       return {
         ...state,
-        pokemonesDetail: [],                             
+        pokemonesDetail: [],
         pokemones: [],
         types: [],
         filtered: [],
@@ -132,7 +133,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         pokemones: [...state.pokemones, action.payload],
-       
+
       }
 
     case ON_SEARCH:
@@ -155,33 +156,33 @@ const reducer = (state = initialState, action) => {
       } catch (error) {
         throw new Error("Personaje no enontrado")
       }
-     case REGISTER:
-  return {
-    ...state,
-    userLogin: {
-      ...state.userLogin,
-      access: true, // Actualizar el estado userLogin.access
-    },
-    isAuthenticated: true
-  };
+    case REGISTER:
+      return {
+        ...state,
+        userLogin: {
+          ...state.userLogin,
+          access: true, // Actualizar el estado userLogin.access
+        },
+        isAuthenticated: true
+      };
 
-      
-      case LOGIN_FN:
-        return {
-          ...state,
-          isAuthenticated: true
-        }
-      
-        case LOGOUT:
-          return {
-            ...state,
-            userLogin: {
-              access: false
-            },
-            isAuthenticated: false
-          };
-    
-    
+
+    case LOGIN_FN:
+      return {
+        ...state,
+        isAuthenticated: true
+      }
+
+    case LOGOUT:
+      return {
+        ...state,
+        userLogin: {
+          access: false
+        },
+        isAuthenticated: false
+      };
+
+
     default:
       return { ...state }
   }

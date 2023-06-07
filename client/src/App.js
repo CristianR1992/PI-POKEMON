@@ -7,7 +7,7 @@ import NavBar from './components/Nav/Nav';
 import Register from './components/Register/Register';
 import Login from './components/Login/Login';
 import { useDispatch, useSelector } from 'react-redux';
-import { validateToken } from './redux/actions';
+
 import { useEffect } from 'react';
 
 function App() {
@@ -16,12 +16,7 @@ function App() {
   const isAuthenticated = useSelector(state => state.isAuthenticated);
 
 
-  useEffect(() => {
-    if (token) {
-      dispatch(validateToken(token));
-    }
-  }, [dispatch, token]);
-
+ 
   return (
     <div>
       <Routes>

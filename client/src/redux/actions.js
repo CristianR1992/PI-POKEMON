@@ -123,7 +123,7 @@ try {
     const response = await axios.post("/login", login)
         if (response.data.access === true) {
             localStorage.setItem('token', response.data.token); //guardo el token en el localstorage
-        return dispatch({
+            return dispatch({
             type:LOGIN_FN,
             payload:response.data
         })
@@ -132,32 +132,6 @@ try {
     return error
 }
     }}
-
-
-    export const validateToken = (token) => {
-        return async (dispatch) => {
-          try {
-            const response = await axios.post('/validateToken', null, {
-              headers: {
-                Authorization: token,
-              },
-            });
-      
-            const { validate } = response.data;
-            if (validate) {
-              dispatch({
-                type: LOGIN_FN,
-                payload: { access: true },
-              });
-            } else {
-              console.log('El token no es válido');
-            }
-          } catch (error) {
-            console.error('Error al validar el token:', error);
-          }
-        };
-      };
-      
 
     export const logOut = () => {
         return async (dispatch) => {
