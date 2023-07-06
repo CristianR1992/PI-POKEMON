@@ -8,7 +8,7 @@ import store from './redux/store';
 import { Provider } from 'react-redux'; 
 //import {Auth0Provider} from "@auth0/auth0-react"
 import axios from 'axios';
- axios.defaults.baseURL = 'http://localhost:3001'
+ axios.defaults.baseURL = 'https://servidor-pokemon-qo0h.onrender.com/'
 //<Auth0Provider domain= "dev-yriwhkqxe3fwzb87.us.auth0.com" clientId='wxHA1T23heVQ87BUBvmShgtOVuI2cDFs'   redirectUri={window.location.origin}>
  // </Auth0Provider>
   
