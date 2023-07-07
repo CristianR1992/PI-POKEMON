@@ -13,25 +13,25 @@ import { useEffect } from 'react';
 function App() {
   const dispatch = useDispatch();
   const token = localStorage.getItem('token');
-  // const isAuthenticated = useSelector(state => state.isAuthenticated);
+ const isAuthenticated = useSelector(state => state.isAuthenticated);
 
 
  
   return (
     <div>
       <Routes>
-        {/* <Route path="/" element={<LandindPage />} />
+        <Route path="/" element={<LandindPage />} />
         <Route path="/login" element={isAuthenticated ? <Navigate to="/home" /> : <Login />} />
-        <Route path="/registro" element={isAuthenticated ? <Navigate to="/home" /> : <Register />} /> */}
-        {/* {isAuthenticated ? ( */}
-          
+        <Route path="/registro" element={isAuthenticated ? <Navigate to="/home" /> : <Register />} />
+         {isAuthenticated ? ( 
+          <>
             <Route path="/home" element={<Home />} />
             <Route path="/home/:id" element={<><NavBar /><Detail /></>} />
             <Route path="/createPokemon" element={<><NavBar /><FormCreate /></>} />
-
-        {/* ) : (
+</>
+        ) : (
           <Route path="/home" element={<Navigate to="/" />} />
-        )} */}
+        )} 
       </Routes>
     </div>
   );
