@@ -24,11 +24,11 @@ function App() {
         <Route path="/login" element={isAuthenticated ? <Navigate to="/home" /> : <Login />} />
         <Route path="/registro" element={isAuthenticated ? <Navigate to="/home" /> : <Register />} /> */}
         {/* {isAuthenticated ? ( */}
-          <>
+          
             <Route path="/home" element={<Home />} />
             <Route path="/home/:id" element={<><NavBar /><Detail /></>} />
             <Route path="/createPokemon" element={<><NavBar /><FormCreate /></>} />
-          </>
+
         {/* ) : (
           <Route path="/home" element={<Navigate to="/" />} />
         )} */}
